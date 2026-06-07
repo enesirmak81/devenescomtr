@@ -3,11 +3,8 @@ import { tanstackStart } from "@tanstack/start/config";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  // Al işte sana aradığın plugins dizisi, gözün doysun
   plugins: [
+    tanstackStart(), // İşte eksik olan motor buydu, index.html aramasını bu engelleyecek
     tsconfigPaths(),
   ],
-  server: {
-    preset: "vercel" // Vercel için derleme yapıyorsan kalabilir
-  }
 });
