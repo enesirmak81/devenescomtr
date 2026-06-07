@@ -1,15 +1,13 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/start/config";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  tanstackStart: {
-    // Sunucu giriş dosyasını Lovable yapısına göre yönlendiriyoruz
-    server: { entry: "server" },
-  },
-  // Sistemin hata vermemesi için aradığı bos eklenti dizisini buraya ekliyoruz
-  vite: {
-    plugins: [],
-    nitro: {
-      preset: "vercel" // Eğer vercel'e döneceksen kalabilir, cloudflare için gerekirse sistem kendi ezer
-    }
+  // Al işte sana aradığın plugins dizisi, gözün doysun
+  plugins: [
+    tsconfigPaths(),
+  ],
+  server: {
+    preset: "vercel" // Vercel için derleme yapıyorsan kalabilir
   }
 });
